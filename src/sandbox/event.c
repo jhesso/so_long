@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:51:06 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/12 14:18:53 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/12 15:50:03 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	win_close(t_mlx *mlx)
 	exit(0);
 }
 
+// void	get_color(int keycode, t_mlx *mlx)
+// {
+// 	if (keycode == 15)
+// 		mlx->color = 0x00FF0000;
+// 	else if (keycode == 5)
+// 		mlx->color = 0x0000FF00;
+// 	else
+// 		mlx->color = 0x000000FF;
+// }
+
 int	key_press(int keycode, t_mlx *mlx)
 {
 	(*mlx).window = (*mlx).window;
@@ -26,5 +36,7 @@ int	key_press(int keycode, t_mlx *mlx)
 		win_close(mlx);
 	else if(keycode == 13 || keycode == 0 || keycode == 1 || keycode == 2)
 		move(keycode, mlx);
+	// else if (keycode == 15 || keycode == 5 || keycode == 11)
+	// 	get_color(keycode, mlx);
 	return (0);
 }

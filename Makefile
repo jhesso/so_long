@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/12 15:21:58 by jhesso           ###   ########.fr        #
+#    Updated: 2023/04/12 18:47:00 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ LIBFT			=	libft.a
 LIBFT_DIR		=	libft/
 SRC_PATH		=	src/
 OBJ_PATH		=	obj/
-SRC				=	main.c draw.c mlx_init.c sandbox.c event.c\
-					move.c
+SRC				=	main.c debug.c
 SRCS			=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ				=	$(SRC:.c=.o)
 OBJS			=	$(addprefix $(OBJ_PATH), $(OBJ))

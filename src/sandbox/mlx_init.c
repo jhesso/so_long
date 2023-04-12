@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 16:57:54 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/12 13:36:35 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/12 16:10:22 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ t_mlx	init_mlx(int width, int height, char *title)
 	return (mlx);
 }
 
-t_img	get_img(t_mlx mlx, int width, int height)
+t_mlx	get_img(t_mlx mlx, int width, int height)
 {
-	t_img	img;
 
-	img.img = mlx_new_image(mlx.mlx, width, height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_len,\
-								&img.endian);
-	return (img);
+	mlx.img = mlx_new_image(mlx.mlx, width, height);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_len,\
+								&mlx.endian);
+	return (mlx);
 }
