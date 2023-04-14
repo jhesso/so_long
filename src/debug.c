@@ -6,17 +6,8 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:43:54 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/12 18:45:13 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/14 15:00:23 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 
-void	debug_print_map(t_map *map)
-{
-	while (map)
-	{
-		ft_printf("%s", map->line);
-		map = map->next;
-	}
-}
