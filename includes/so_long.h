@@ -39,8 +39,11 @@ typedef struct	s_map
 void	clean_exit(int err_code, char **map, t_mlx *mlx);
 int		error(int err_code);
 
-/* map.c */
+/* read_map.c */
 char	**read_map(char *file);
+
+/* map_validation.c */
+void	map_validate(char **map);
 
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);

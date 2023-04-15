@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/15 17:24:12 by jhesso           ###   ########.fr        #
+#    Updated: 2023/04/15 19:17:07 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ LIBFT			=	libft.a
 LIBFT_DIR		=	libft/
 SRC_PATH		=	src/
 OBJ_PATH		=	obj/
-SRC				=	main.c debug.c map.c utils.c
+SRC				=	main.c\
+					read_map.c map_validation.c\
+					utils.c debug.c
 SRCS			=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ				=	$(SRC:.c=.o)
 OBJS			=	$(addprefix $(OBJ_PATH), $(OBJ))

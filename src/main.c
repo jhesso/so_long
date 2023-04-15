@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/15 18:13:45 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/15 18:26:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int	main(int ac, char **av)
 	if (!map)
 		clean_exit(error(1), NULL, NULL);
 	print_string_arr(map);
+	map_validate(map);
 }
