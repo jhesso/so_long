@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/14 15:53:21 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/15 18:13:45 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	main(int ac, char **av)
 	char	**map;
 
 	if (ac < 2)
-		error(4);
+		clean_exit(error(4), NULL, NULL);
 	if (ac > 2)
-		error(5);
+		clean_exit(error(5), NULL, NULL);
 	map = read_map(av[1]);
 	if (!map)
-		error(1);
-
+		clean_exit(error(1), NULL, NULL);
+	print_string_arr(map);
 }

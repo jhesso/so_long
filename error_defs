@@ -4,3 +4,4 @@
 4 = no map given as argument
 5 = too many arguments given
 6 = invalid filename (didn't have extension .ber)
+7 = file not found

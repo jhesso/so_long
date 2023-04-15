@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/12 18:47:00 by jhesso           ###   ########.fr        #
+#    Updated: 2023/04/15 17:24:12 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT			=	libft.a
 LIBFT_DIR		=	libft/
 SRC_PATH		=	src/
 OBJ_PATH		=	obj/
-SRC				=	main.c debug.c
+SRC				=	main.c debug.c map.c utils.c
 SRCS			=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ				=	$(SRC:.c=.o)
 OBJS			=	$(addprefix $(OBJ_PATH), $(OBJ))
@@ -45,6 +45,9 @@ $(NAME): $(OBJS) libft
 	@cc $(CFLAGS) $(OBJS) $(MLX) -o $(NAME) -L$(LIBFT_DIR) -lft
 	@echo "$(GREEN)done$(RESET)"
 
+linux: $(OBJS) libft
+	cc $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft
+
 clean:
 	@echo "$(RED)removing object files$(RESET)"
 	@/bin/rm $(OBJS)
@@ -57,4 +60,4 @@ fclean: clean
 	@/bin/rm -rf $(OBJ_PATH)
 	@echo "$(RED)done$(RESET)"
 
-.PHONY: all libft clean fclean
+.PHONY: all libft clean fclean linux
