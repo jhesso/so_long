@@ -1,4 +1,0 @@
-empty_file.ber results in a segfault :)
-no_collect.ber collectible check doesn't work properly as this didn't print error
-no_exit.ber didn't detect that there is no no exit
-no_start.ber didn't detect that there is no start

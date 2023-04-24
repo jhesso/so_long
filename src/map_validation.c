@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/15 19:28:32 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 15:35:02 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,30 +70,18 @@ static int	validate_shape(char **map)
 	len = ft_strlen(map[0]);
 	i = 0;
 	if (!validate_vertical(map[i]))
-	{
-		ft_printf("top line not solid wall\n");
 		return (0);
-	}
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != len)
-		{
-			ft_printf("map is not rectangular\n");
 			return (0);
-		}
 		if (map[i][0] != '1' || map[i][len - 1] != '1')
-		{
-			ft_printf("middle lines are not walled off\n");
 			return (0);
-		}
 		i++;
 	}
 	i--;
 	if (!validate_vertical(map[i]))
-	{
-		ft_printf("bottom line not solid wall\n");
 		return (0);
-	}
 	return (1);
 }
 
@@ -123,11 +111,8 @@ static int	check_required(char **map, int exit, int collectible, int start)
 		}
 		i++;
 	}
-	if (exit != 1 && start != 1 && collectible < 1)
-	{
-		ft_printf("requirements not met\n");
+	if (exit != 1 || start != 1 || collectible < 1)
 		return (0);
-	}
 	return (1);
 }
 
