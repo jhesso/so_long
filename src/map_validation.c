@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/24 16:26:56 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 16:34:57 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,28 +86,28 @@ static int	validate_shape(t_map *map)
 *	1 Player start, 1 exit and at least 1 collectible
 *	returns 1 if everything is found, 0 if not
 */
-static int	check_required(char **map, int exit, int collectible, int start)
+static int	check_required(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while  (map[i])
+	while  (map->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (map->map[i][j])
 		{
-			if (map[i][j] == 'E')
-				exit++;
-			else if (map[i][j] == 'C')
-				collectible++;
-			else if(map[i][j] == 'P')
-				start++;
+			if (map->map[i][j] == 'E')
+				map->exit++;
+			else if (map->map[i][j] == 'C')
+				map->collectibles++;
+			else if(map->map[i][j] == 'P')
+				map->start++;
 			j++;
 		}
 		i++;
 	}
-	if (exit != 1 || start != 1 || collectible < 1)
+	if (map->exit != 1 || map->start != 1 || map->collectibles < 1)
 		return (0);
 	return (1);
 }
@@ -121,7 +121,7 @@ t_map	map_validate(t_map map)
 	int	ret;
 	ret = validate_characters(map.map);
 	ret *= validate_shape(&map);
-	ret *= check_required(map.map, 0, 0, 0);
+	ret *= check_required(&map);
 	ret *= flood_fill(map.map);
 	map.rows = get_rows(map.map);
 	if (ret == 0)
