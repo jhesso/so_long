@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/24 16:34:57 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 17:26:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_map	map_validate(t_map map)
 	ret = validate_characters(map.map);
 	ret *= validate_shape(&map);
 	ret *= check_required(&map);
-	ret *= flood_fill(map.map);
+	ret *= flood_fill(&map);
 	map.rows = get_rows(map.map);
 	if (ret == 0)
 		clean_exit(error(3), map.map, NULL);

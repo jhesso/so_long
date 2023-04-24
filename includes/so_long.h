@@ -51,7 +51,7 @@ char	**read_map(char *file);
 t_map	map_validate(t_map map);
 
 /* flood_fill.c */
-int		flood_fill(char **map);
+int		flood_fill(t_map *map);
 
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);

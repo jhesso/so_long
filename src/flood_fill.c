@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:52:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/24 16:24:00 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 17:32:12 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 *	I use the flood fill algorithm to check if there is a valid path on the map
 *	returns -1 if no valid path is found and 1 if one is found
 */
-int	flood_fill(char **map)
+int	flood_fill(t_map *map)
 {
-	char	*str;
 
-	str = map[0];
 	return (1);
 }
