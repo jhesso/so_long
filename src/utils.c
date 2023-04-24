@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:19 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/15 17:29:04 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 16:20:04 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ void	clean_exit(int err_code, char **map, t_mlx *mlx)
 	if (mlx)
 		free(mlx);
 	exit (err_code);
+}
+
+int	get_rows(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }

@@ -31,19 +31,27 @@ typedef struct	s_mlx
 
 typedef struct	s_map
 {
-	char		*line;
-	struct		s_map *next;
+	char		**map;
+	int			rows;
+	int			cols;
+	int			collectibles;
+	int			start;
+	int			exit;
 }				t_map;
 
 /* utils.c */
 void	clean_exit(int err_code, char **map, t_mlx *mlx);
 int		error(int err_code);
+int		get_rows(char **map);
 
 /* read_map.c */
 char	**read_map(char *file);
 
 /* map_validation.c */
-void	map_validate(char **map);
+t_map	map_validate(t_map map);
+
+/* flood_fill.c */
+int		flood_fill(char **map);
 
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);

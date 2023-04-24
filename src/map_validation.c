@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/24 15:35:02 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/24 16:26:56 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static int	validate_characters(char **map)
 		while (map[i][j] != '\0')
 		{	if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C' &&\
 				map[i][j] != 'E' && map[i][j] != 'P')
-				{
-					ft_printf("invalid character found: %c\n", map[i][j]);
 					return (0);
-				}
 			j++;
 		}
 		i++;
@@ -62,25 +59,24 @@ static int	validate_vertical(char *line)
 *	and is surrounded by the wall char '1'
 *	returns 1 if valid, 0 if not
 */
-static int	validate_shape(char **map)
+static int	validate_shape(t_map *map)
 {
-	size_t	len;
 	int		i;
 
-	len = ft_strlen(map[0]);
+	map->cols = ft_strlen(map->map[0]);
 	i = 0;
-	if (!validate_vertical(map[i]))
+	if (!validate_vertical(map->map[i]))
 		return (0);
-	while (map[i])
+	while (map->map[i])
 	{
-		if (ft_strlen(map[i]) != len)
+		if (ft_strlen(map->map[i]) != (size_t)map->cols)
 			return (0);
-		if (map[i][0] != '1' || map[i][len - 1] != '1')
+		if (map->map[i][0] != '1' || map->map[i][map->cols - 1] != '1')
 			return (0);
 		i++;
 	}
 	i--;
-	if (!validate_vertical(map[i]))
+	if (!validate_vertical(map->map[i]))
 		return (0);
 	return (1);
 }
@@ -120,13 +116,15 @@ static int	check_required(char **map, int exit, int collectible, int start)
 *	validate given map
 *	exits program cleanly if errors found
 */
-void	map_validate(char **map)
+t_map	map_validate(t_map map)
 {
 	int	ret;
-	ret = validate_characters(map);
-	ret *= validate_shape(map);
-	ret *= check_required(map, 0, 0, 0);
-	//todo: check valid path
+	ret = validate_characters(map.map);
+	ret *= validate_shape(&map);
+	ret *= check_required(map.map, 0, 0, 0);
+	ret *= flood_fill(map.map);
+	map.rows = get_rows(map.map);
 	if (ret == 0)
-		clean_exit(error(3), map, NULL);
+		clean_exit(error(3), map.map, NULL);
+	return (map);
 }
