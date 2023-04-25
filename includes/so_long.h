@@ -29,15 +29,30 @@ typedef struct	s_mlx
 	int			coord_y;
 }				t_mlx;
 
+/*	s_map
+*	contains all information gathered about the given map
+*/
 typedef struct	s_map
 {
 	char		**map;
+	int			**coordinate_map;
 	int			rows;
 	int			cols;
 	int			collectibles;
 	int			start;
 	int			exit;
 }				t_map;
+
+/*	s_player
+*	contains information of the player
+*	(position (x, y) and any other useful information I deem necessary)
+*/
+typedef struct	s_player
+{
+	int			x;
+	int			y;
+}				t_player;
+
 
 /* utils.c */
 void	clean_exit(int err_code, char **map, t_mlx *mlx);
@@ -48,10 +63,13 @@ int		get_rows(char **map);
 char	**read_map(char *file);
 
 /* map_validation.c */
-t_map	map_validate(t_map map);
+void	map_validate(t_map *map, t_player *player);
+
+/* map_coordinates.c */
+void	get_coordinates(t_map *map, t_player *player);
 
 /* flood_fill.c */
-int		flood_fill(t_map *map);
+int		flood_fill(t_map map, t_player player);
 
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);
@@ -72,6 +90,6 @@ void	draw_square(t_mlx *mlx, int size);
  							// int color);
 
 /* debug.c */
-void	debug_print_map(t_map *map);
+void	debug_print_coordinate_map(t_map map);
 
 #endif
