@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/25 14:43:46 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/25 18:02:06 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,16 @@ static int	check_required(t_map *map)
 void	map_validate(t_map *map, t_player *player)
 {
 	int	ret;
+
 	ret = validate_characters(map->map);
 	ret *= validate_shape(map);
 	ret *= check_required(map);
 	map->rows = get_rows(map->map);
 	get_coordinates(map, player);
-	debug_print_coordinate_map(*map);
-	ft_printf("player->x: %d, player->y: %d\n", player->x, player->y);
-	// ret *= flood_fill(*map, *player);
+	// debug_print_coordinate_map(*map);
+	// ft_printf("player->x: %d, player->y: %d\n", player->pos.x, player->pos.y);
+	ret *= flood_fill(map, player->pos, map->coordinate_map);
+	ft_printf("returned from flood fill\n");
 	if (ret == 0)
 		clean_exit(error(3), map->map, NULL);
 }

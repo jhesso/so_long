@@ -41,7 +41,14 @@ typedef struct	s_map
 	int			collectibles;
 	int			start;
 	int			exit;
+	int			c;
 }				t_map;
+
+typedef struct	s_vector
+{
+	int			x;
+	int			y;
+}				t_vector;
 
 /*	s_player
 *	contains information of the player
@@ -49,8 +56,8 @@ typedef struct	s_map
 */
 typedef struct	s_player
 {
-	int			x;
-	int			y;
+	int			collectibles;
+	t_vector	pos;
 }				t_player;
 
 
@@ -69,7 +76,7 @@ void	map_validate(t_map *map, t_player *player);
 void	get_coordinates(t_map *map, t_player *player);
 
 /* flood_fill.c */
-int		flood_fill(t_map map, t_player player);
+int		flood_fill(t_map *map, t_vector pos, int **coord_map);
 
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);

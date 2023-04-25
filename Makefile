@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/25 14:42:19 by jhesso           ###   ########.fr        #
+#    Updated: 2023/04/25 17:38:39 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,4 +62,6 @@ fclean: clean
 	@/bin/rm -rf $(OBJ_PATH)
 	@echo "$(RED)done$(RESET)"
 
-.PHONY: all libft clean fclean linux
+re: fclean all
+
+.PHONY: all libft clean fclean linux re
