@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/15 18:13:09 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 17:34:25 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ static int	validate_filename(char *file)
 	if (!ft_strcmp(file + (ft_strlen(file) - 4), ".ber"))
 		return (1);
 	return (0);
+}
+
+static void	check_newline(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '\n' && line[i + 1] == '\n')
+			clean_exit(error(3), NULL, NULL);
+		i++;
+	}
 }
 
 char	**read_map(char *file)
@@ -58,6 +71,7 @@ char	**read_map(char *file)
 		}
 	}
 	free(buf);
+	check_newline(line);
 	map = ft_split(line, '\n');
 	free(line);
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 15:12:21 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 17:27:23 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	main(int ac, char **av)
 	if (!map.map)
 		clean_exit(error(1), NULL, NULL);
 	map_validate(&map, &player);
-	// ft_printf("rows: %d\ncols: %d\nexit: %d\nstart: %d\ncollectibles: %d\n", map.rows, map.cols, map.exit, map.start, map.collectibles);
+	print_string_arr(map.map);
+	game_init(map, player);
+	return (0);
 }

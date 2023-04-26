@@ -6,11 +6,11 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 16:57:54 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/12 16:10:22 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 16:22:18 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 t_mlx	init_mlx(int width, int height, char *title)
 {
