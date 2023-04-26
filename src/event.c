@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:06:22 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 19:46:09 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 20:20:00 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx.mlx, game->mlx.window);
+	mlx_destroy_window(game->mlx, game->win);
 	ft_printf("closed window\n");
 	exit(0);
 }

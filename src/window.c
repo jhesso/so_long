@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:12:58 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 17:20:06 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 20:21:31 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	calculate_window_size(t_game *game)
 {
-	game->width = game->map.cols * SPRITE_SIZE;
-	game->height = game->map.rows * SPRITE_SIZE;
+	game->width = game->map.cols * SIZE;
+	game->height = game->map.rows * SIZE;
+	ft_printf("cols: %d, rows: %d\n", game->map.cols, game->map.rows);
 	ft_printf("width: %d, height: %d\n", game->width, game->height);
 	// if (game->width > 1920)
 	// 	game->width = 1920;

@@ -6,26 +6,22 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 16:57:54 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 16:22:18 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 20:18:24 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_mlx	init_mlx(int width, int height, char *title)
+void	init_mlx(t_game *game, char *title)
 {
-	t_mlx	mlx;
-
-	 mlx.mlx = mlx_init();
-	 mlx.window = mlx_new_window(mlx.mlx, width, height, title);
-	return (mlx);
+	 game->mlx = mlx_init();
+	 ft_printf("width: %d, height: %d\n", game->width, game->height);
+	 game->win = mlx_new_window(game->mlx, game->width, game->height, title);
 }
 
-t_mlx	get_img(t_mlx mlx, int width, int height)
+void	get_img(t_game *game, int width, int height)
 {
-
-	mlx.img = mlx_new_image(mlx.mlx, width, height);
-	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel, &mlx.line_len,\
-								&mlx.endian);
-	return (mlx);
+	game->img = mlx_new_image(game->mlx, width, height);
+	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel, &game->line_len,\
+								&game->endian);
 }

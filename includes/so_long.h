@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 19:57:27 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 20:23:24 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include "../libft/includes/libft.h"
 
-# ifndef SPRITE_SIZE
-#  define SPRITE_SIZE 32
+# ifndef SIZE
+#  define SIZE 32
 # endif
 
 # ifndef WALL
@@ -89,10 +89,10 @@ typedef struct	s_player
 	t_vector	pos;
 }				t_player;
 
-/*	s_mlx
-*	contains all stuff needed for mlx
+/*	s_game
+*	contains all information needed for the game
 */
-typedef struct	s_mlx
+typedef struct	s_game
 {
 	void		*mlx;
 	void		*win;
@@ -101,17 +101,10 @@ typedef struct	s_mlx
 	int			bits_per_pixel;
 	int			line_len;
 	int			endian;
-}				t_mlx;
-/*	s_game
-*	contains all information needed for the game
-*/
-typedef struct	s_game
-{
 	int			width;
 	int			height;
 	t_map		map;
 	t_player	player;
-	t_mlx		mlx;
 	void		*wall;
 	void		*empty;
 	void		*character;
@@ -154,14 +147,14 @@ void	calculate_window_size(t_game *game);
 /*	draw_map.c */
 void	init_sprite(t_game *game);
 void	assign_image(t_game *game, char c, int x, int y);
-int	draw_map(t_game *game);
+int		draw_map(t_game *game);
 
 /* event.c */
 int	close_game(t_game *game);
 int	key_press(int keycode, t_game *game);
 
 /* mlx_init.c */
-t_mlx	init_mlx(int width, int height, char *title);
-t_mlx	get_img(t_mlx mlx, int width, int height);
+void	init_mlx(t_game *game, char *title);
+void	get_img(t_game *game, int width, int height);
 
 #endif
