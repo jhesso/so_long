@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
+/*   Updated: 2023/04/26 19:57:27 by jhesso           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -9,38 +21,48 @@
 # include <math.h>
 # include "../libft/includes/libft.h"
 
-# ifndef BUFF
-#  define BUFF 42
-# endif
-
 # ifndef SPRITE_SIZE
 #  define SPRITE_SIZE 32
 # endif
 
-# ifndef KEYCODES
-#  define W 13
-#  define A 0
-#  define S 1
-#  define D 2
-#  define ESC 53
+# ifndef WALL
+#  define WALL "./textures/wall.xpm"
 # endif
+
+# ifndef EMPTY
+#  define EMPTY "./textures/empty.xpm"
+# endif
+
+# ifndef CHAR
+#  define CHAR "./textures/Pink_Monster.xpm"
+# endif
+
+# ifndef COLLECT
+#  define COLLECT "./textures/wall.xpm"
+# endif
+
+# ifndef EXIT
+#  define EXIT "./textures/wall.xpm"
+# endif
+
+# ifndef BUFF
+#  define BUFF 42
+# endif
+
+enum e_key
+{
+	W = 13,
+	A = 0,
+	S = 1,
+	D = 2,
+	ESC = 53
+};
 
 typedef struct	s_vector
 {
 	int			x;
 	int			y;
 }				t_vector;
-
-typedef struct	s_mlx
-{
-	void		*mlx;
-	void		*window;
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_len;
-	int			endian;
-}				t_mlx;
 
 /*	s_map
 *	contains all information gathered about the given map
@@ -67,6 +89,22 @@ typedef struct	s_player
 	t_vector	pos;
 }				t_player;
 
+/*	s_mlx
+*	contains all stuff needed for mlx
+*/
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_len;
+	int			endian;
+}				t_mlx;
+/*	s_game
+*	contains all information needed for the game
+*/
 typedef struct	s_game
 {
 	int			width;
@@ -76,7 +114,7 @@ typedef struct	s_game
 	t_mlx		mlx;
 	void		*wall;
 	void		*empty;
-	void		*player_img;
+	void		*character;
 	void		*collectible;
 	void		*exit;
 }				t_game;
@@ -86,6 +124,12 @@ void	clean_exit(int err_code, char **map, t_mlx *mlx);
 int		error(int err_code);
 int		get_rows(char **map);
 
+/* debug.c */
+void	debug_print_coordinate_map(t_map map);
+
+/**********/
+/*	 MAP  */
+/**********/
 /* read_map.c */
 char	**read_map(char *file);
 
@@ -98,11 +142,19 @@ void	get_coordinates(t_map *map, t_player *player);
 /* flood_fill.c */
 int		flood_fill(t_map *map, t_vector pos, int **coord_map);
 
+/**********/
+/*	GAME  */
+/**********/
 /* game.c */
 void	game_init(t_map map, t_player player);
 
 /* window.c */
 void	calculate_window_size(t_game *game);
+
+/*	draw_map.c */
+void	init_sprite(t_game *game);
+void	assign_image(t_game *game, char c, int x, int y);
+int	draw_map(t_game *game);
 
 /* event.c */
 int	close_game(t_game *game);
@@ -111,8 +163,5 @@ int	key_press(int keycode, t_game *game);
 /* mlx_init.c */
 t_mlx	init_mlx(int width, int height, char *title);
 t_mlx	get_img(t_mlx mlx, int width, int height);
-
-/* debug.c */
-void	debug_print_coordinate_map(t_map map);
 
 #endif
