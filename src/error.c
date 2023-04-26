@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:45 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 15:14:56 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 21:09:25 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	error(int err_code)
 *	when ran into an error, free all allocated memory, print an error message
 *	and cleanly stop running the program
 */
-void	clean_exit(int err_code, char **map, t_mlx *mlx)
+void	clean_exit(int err_code, char **map, t_game *game)
 {
 	// free everything
 	if (map)
 		free(map);
-	if (mlx)
-		free(mlx);
+	if (game)
+		free(game);
 	exit (err_code);
 }

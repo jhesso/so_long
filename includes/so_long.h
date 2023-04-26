@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 20:23:24 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 21:36:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 # endif
 
 # ifndef COLLECT
-#  define COLLECT "./textures/wall.xpm"
+#  define COLLECT "./textures/coin.xpm"
 # endif
 
 # ifndef EXIT
-#  define EXIT "./textures/wall.xpm"
+#  define EXIT "./textures/exit.xpm"
 # endif
 
 # ifndef BUFF
@@ -113,7 +113,7 @@ typedef struct	s_game
 }				t_game;
 
 /* utils.c */
-void	clean_exit(int err_code, char **map, t_mlx *mlx);
+void	clean_exit(int err_code, char **map, t_game *game);
 int		error(int err_code);
 int		get_rows(char **map);
 

@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:19:40 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 20:02:13 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 21:34:50 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ void	assign_image(t_game *game, char c, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, game->character, x, y);
 	}
 	else if (c == 'C')
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->empty, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->collectible, x, y);
+	}
 	else if (c == 'E')
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->empty, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->exit, x, y);
+	}
 }
 
 int	draw_map(t_game *game)
