@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/25 17:38:39 by jhesso           ###   ########.fr        #
+#    Updated: 2023/04/26 15:15:16 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_PATH		=	src/
 OBJ_PATH		=	obj/
 SRC				=	main.c\
 					read_map.c map_validation.c flood_fill.c map_coordinates.c\
-					utils.c debug.c
+					utils.c debug.c error.c
 SRCS			=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ				=	$(SRC:.c=.o)
 OBJS			=	$(addprefix $(OBJ_PATH), $(OBJ))

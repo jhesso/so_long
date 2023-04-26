@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:52:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/25 18:05:24 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 15:11:29 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,11 @@ int	flood_fill(t_map *map, t_vector player, int **coord_map)
 		map->exit = 2;
 	else if (coord_map[player.y][player.x] == 2)
 		map->c++;
-	printf("player.x: %d, player.y: %d\n", player.x, player.y);
 	coord_map[player.y][player.x] = 1;
-	printf("%d\n", coord_map[player.y][player.x]);
-	printf("player.x: %d, player.y: %d\n", player.x, player.y);
 	flood_fill(map, (t_vector){player.x + 1, player.y}, coord_map);
-	ft_printf("check down\n");
 	flood_fill(map, (t_vector){player.x - 1, player.y}, coord_map);
-	ft_printf("check above\n");
 	flood_fill(map, (t_vector){player.x, player.y + 1}, coord_map);
-	ft_printf("check right\n");
 	flood_fill(map, (t_vector){player.x, player.y - 1}, coord_map);
-	ft_printf("check left\n");
 	if (map->c == map->collectibles && map->exit == 2)
 		return (1);
 	return (0);

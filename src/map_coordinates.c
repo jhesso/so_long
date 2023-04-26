@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:12:19 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/25 16:53:41 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/26 15:13:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,4 @@ void	get_coordinates(t_map *map, t_player *player)
 {
 	map->coordinate_map = parse_map(map, 0, 0);
 	get_player_start_location(player, map);
-	ft_printf("player start x: %d, y: %d\n", player->pos.x, player->pos.y);
 }
