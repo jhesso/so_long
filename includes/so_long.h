@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 21:36:07 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/28 14:49:28 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct	s_map
 typedef struct	s_player
 {
 	int			collectibles;
+	int			win_condition;
 	t_vector	pos;
 }				t_player;
 
@@ -150,8 +151,14 @@ void	assign_image(t_game *game, char c, int x, int y);
 int		draw_map(t_game *game);
 
 /* event.c */
-int	close_game(t_game *game);
-int	key_press(int keycode, t_game *game);
+int		close_game(t_game *game);
+int		key_press(int keycode, t_game *game);
+void	check_win(t_game *game);
+
+/* move.c */
+void	move(t_game *game);
+void	move_up(t_game *game);
+
 
 /* mlx_init.c */
 void	init_mlx(t_game *game, char *title);

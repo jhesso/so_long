@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:07:25 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 20:22:32 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/04/28 14:49:38 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	game_init(t_map map, t_player player)
 
 	game.map = map;
 	game.player = player;
+	game.player.collectibles = 0;
+	game.player.win_condition = 0;
 	calculate_window_size(&game);
 	init_mlx(&game, "so_long");
 	get_img(&game, game.width, game.height);
