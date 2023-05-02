@@ -6,33 +6,60 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:06:22 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/28 14:34:18 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/02 20:21:38 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	move(t_game *game)
+{
+	mlx_clear_window(game->mlx, game->win);
+	draw_map(game);
+	game->player.moves++;
+}
+
+void	print_moves(t_game *game)
+{
+	char	*moves;
+
+	moves = ft_itoa(game->player.moves);
+	moves = ft_strjoin("moves: ", moves);
+	mlx_string_put(game->mlx, game->win, 5, 5, GREEN, moves);
+	ft_printf("%s\n", moves);
+	free(moves);
+}
+
 int	close_game(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
-	ft_printf("closed window\n");
 	exit(0);
 }
 
 int	key_press(int keycode, t_game *game)
 {
-	ft_printf("key pressed: %d\n", keycode);
 	if (keycode == ESC)
 		close_game(game);
 	else if (keycode == W)
-		move_up(game);
+	{
+		if (move_up(game, game->player_x, game->player_y))
+			move(game);
+	}
 	else if (keycode == A)
-		move_left(game);
+	{
+		if (move_left(game, game->player_x, game->player_y))
+			move(game);
+	}
 	else if (keycode == S)
-		move_down(game);
+	{
+		if (move_down(game, game->player_x, game->player_y))
+			move(game);
+	}
 	else if (keycode == D)
-		move_rigth(game);
-	// else if (keycode == 15 || keycode == 5 || keycode == 11)
-	// 	get_color(keycode, mlx);
+	{
+		if (move_right(game, game->player_x, game->player_y))
+			move(game);
+	}
+	print_moves(game);
 	return (0);
 }

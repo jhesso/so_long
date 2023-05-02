@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 19:46:01 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:50:16 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	if (!map.map)
 		clean_exit(error(1), NULL, NULL);
 	map_validate(&map, &player);
-	print_string_arr(map.map);
+	// ft_printf("map validated succesfully\n");
 	game_init(map, player);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/28 14:49:28 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/02 20:04:49 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@
 #  define BUFF 42
 # endif
 
+# ifndef GREEN
+#  define GREEN 0x00FF00
+# endif
+
 enum e_key
 {
 	W = 13,
@@ -87,6 +91,7 @@ typedef struct	s_player
 {
 	int			collectibles;
 	int			win_condition;
+	int			moves;
 	t_vector	pos;
 }				t_player;
 
@@ -99,11 +104,14 @@ typedef struct	s_game
 	void		*win;
 	void		*img;
 	char		*addr;
+	char		**map_cpy;
 	int			bits_per_pixel;
 	int			line_len;
 	int			endian;
 	int			width;
 	int			height;
+	int			player_x;
+	int			player_y;
 	t_map		map;
 	t_player	player;
 	void		*wall;
@@ -141,6 +149,7 @@ int		flood_fill(t_map *map, t_vector pos, int **coord_map);
 /**********/
 /* game.c */
 void	game_init(t_map map, t_player player);
+void	game_won(t_game *game);
 
 /* window.c */
 void	calculate_window_size(t_game *game);
@@ -153,11 +162,14 @@ int		draw_map(t_game *game);
 /* event.c */
 int		close_game(t_game *game);
 int		key_press(int keycode, t_game *game);
-void	check_win(t_game *game);
+int		check_win(t_game *game);
 
 /* move.c */
 void	move(t_game *game);
-void	move_up(t_game *game);
+int		move_up(t_game *game, int x, int y);
+int		move_left(t_game *game, int x, int y);
+int		move_down(t_game *game, int x, int y);
+int		move_right(t_game *game, int x, int y);
 
 
 /* mlx_init.c */
