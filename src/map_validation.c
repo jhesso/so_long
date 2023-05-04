@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:24:23 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 17:09:05 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static int	validate_characters(char **map)
 	return (1);
 }
 
-/*	validate_vertical()
+/*	validate_horizontal()
 *	check that the top and bottom row only contains '1's
 *	returns 1 if true, 0 if not
 */
-static int	validate_vertical(char *line)
+static int	validate_horizontal(char *line)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ static int	validate_shape(t_map *map)
 
 	map->cols = ft_strlen(map->map[0]);
 	i = 0;
-	if (!validate_vertical(map->map[i]))
+	if (!validate_horizontal(map->map[i]))
 		return (0);
 	while (map->map[i])
 	{
@@ -77,7 +77,7 @@ static int	validate_shape(t_map *map)
 		i++;
 	}
 	i--;
-	if (!validate_vertical(map->map[i]))
+	if (!validate_horizontal(map->map[i]))
 		return (0);
 	return (1);
 }
@@ -126,6 +126,8 @@ void	map_validate(t_map *map, t_player *player)
 	ret *= check_required(map);
 	map->rows = get_rows(map->map);
 	get_coordinates(map, player);
+	if (ret == 0)
+		clean_exit(error(3), map->map, NULL);
 	ret *= flood_fill(map, player->pos, map->coordinate_map);
 	if (ret == 0)
 		clean_exit(error(3), map->map, NULL);
