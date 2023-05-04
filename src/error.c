@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:45 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 15:47:50 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:19:12 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	error(int err_code)
 		print_err("map file should end in .ber");
 	else if (err_code == 7)
 		print_err("file not found");
+	else if (err_code == 8)
+		print_err("read failed");
 	return (err_code);
 }
 

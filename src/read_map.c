@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:00:17 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:18:40 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	**read_map(char *file)
 			free (buf);
 			if (line)
 				free(line);
-			clean_exit(error(1), NULL, NULL);
+			clean_exit(error(8), NULL, NULL);
 		}
 		buf[ret] = '\0';
 		if (flag)
