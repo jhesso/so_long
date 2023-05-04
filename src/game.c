@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:07:25 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/02 20:40:56 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:38:54 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,8 @@
 */
 void	game_won(t_game *game)
 {
-	int	anim_count;
-	int	x;
-	int	y;
-	int	i;
-
-	anim_count = 0;
-	x = game->player_x;
-	y = game->player_y;
-	ft_printf("x: %d, y: %d\n", x, y);
 	ft_printf("Congrats, you won the game!\n");
-	while (x >= 0 && anim_count < 6)
-	{
-		i = 0;
-		while (i < 1000000)
-			i++;
-		game->map.map[y][x] = 0;
-		game->map.map[y][x - 1] = 'E';
-		mlx_clear_window(game->mlx, game->win);
-		draw_map(game);
-		x--;
-		anim_count++;
-	}
-	// close_game(game);
+	close_game(game);
 }
 
 /*	game_init()

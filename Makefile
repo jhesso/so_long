@@ -6,13 +6,13 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/05/02 17:28:15 by jhesso           ###   ########.fr        #
+#    Updated: 2023/05/04 15:07:20 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 CFLAGS			=	-Wall -Wextra -Werror
-MLX				=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX				=	-lmlx -framework OpenGL -framework AppKit
 LIBFT			=	libft.a
 LIBFT_DIR		=	libft/
 SRC_PATH		=	src/

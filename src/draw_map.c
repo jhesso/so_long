@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:19:40 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/02 19:44:09 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:37:05 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_sprite(t_game *game)
 	game->character = mlx_xpm_file_to_image(game->mlx, CHAR, &x, &y);
 	game->collectible = mlx_xpm_file_to_image(game->mlx, COLLECT, &x, &y);
 	game->exit = mlx_xpm_file_to_image(game->mlx, EXIT, &x, &y);
+	game->exit_open = mlx_xpm_file_to_image(game->mlx, EXIT_O, &x, &y);
 }
 
 void	assign_image(t_game *game, char c, int x, int y)
@@ -40,10 +41,15 @@ void	assign_image(t_game *game, char c, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, game->empty, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->collectible, x, y);
 	}
-	else if (c == 'E')
+	else if (c == 'E' && game->player.collectibles != game->map.collectibles)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->empty, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->exit, x, y);
+	}
+	else if (c == 'E')
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->empty, x, y);
+		mlx_put_image_to_window(game->mlx, game->win, game->exit_open, x, y);
 	}
 }
 

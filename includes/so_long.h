@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/02 20:04:49 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:34:51 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@
 # endif
 
 # ifndef EXIT
-#  define EXIT "./textures/exit.xpm"
+#  define EXIT "./textures/exit_door.xpm"
+# endif
+
+# ifndef EXIT_O
+#  define EXIT_O "./textures/exit_door_open.xpm"
 # endif
 
 # ifndef BUFF
@@ -119,6 +123,7 @@ typedef struct	s_game
 	void		*character;
 	void		*collectible;
 	void		*exit;
+	void		*exit_open;
 }				t_game;
 
 /* utils.c */
