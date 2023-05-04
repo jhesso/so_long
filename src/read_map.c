@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:51:02 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 17:16:41 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	check_newline(char *line)
 	}
 }
 
-static char *read_file(int fd, char *buf, int flag)
+static char	*read_file(int fd, char *buf, int flag)
 {
-	int	ret;
-	char *line;
+	int		ret;
+	char	*line;
 
 	ret = 1;
 	while (ret > 0)

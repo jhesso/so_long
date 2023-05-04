@@ -6,7 +6,7 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/05/04 16:08:04 by jhesso           ###   ########.fr        #
+#    Updated: 2023/05/04 17:15:31 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,12 +49,6 @@ $(NAME): $(OBJS) libft
 	@cc $(CFLAGS) $(OBJS) $(MLX) -o $(NAME) -L$(LIBFT_DIR) -lft
 	@echo "$(GREEN)done$(RESET)"
 
-linux: $(OBJS) libft
-	cc $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft
-
-debug:
-	cc $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft -g
-
 clean:
 	@echo "$(RED)removing object files$(RESET)"
 	@/bin/rm $(OBJS)
@@ -69,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean linux re
+.PHONY: all libft clean fclean re
