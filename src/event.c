@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:06:22 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 15:50:41 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 17:29:06 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,25 @@ int	close_game(t_game *game)
 */
 int	key_press(int keycode, t_game *game)
 {
+	ft_printf("key pressed: %d\n", keycode);
 	if (keycode == ESC)
 		close_game(game);
-	else if (keycode == W)
+	else if (keycode == W || keycode == UP)
 	{
 		if (move_up(game, game->player_x, game->player_y))
 			move(game);
 	}
-	else if (keycode == A)
+	else if (keycode == A || keycode == LEFT)
 	{
 		if (move_left(game, game->player_x, game->player_y))
 			move(game);
 	}
-	else if (keycode == S)
+	else if (keycode == S || keycode == DOWN)
 	{
 		if (move_down(game, game->player_x, game->player_y))
 			move(game);
 	}
-	else if (keycode == D)
+	else if (keycode == D || keycode == RIGHT)
 	{
 		if (move_right(game, game->player_x, game->player_y))
 			move(game);

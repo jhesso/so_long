@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:51:07 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 17:28:24 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ enum e_key
 	A = 0,
 	S = 1,
 	D = 2,
-	ESC = 53
+	ESC = 53,
+	UP = 126,
+	DOWN = 125,
+	RIGHT = 124,
+	LEFT = 123
 };
 
 typedef struct	s_vector
