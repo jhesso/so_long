@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:06:22 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 17:29:06 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 18:14:25 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	move(t_game *game)
 void	print_moves(t_game *game)
 {
 	char	*moves;
+	char	*num;
 
-	moves = ft_itoa(game->player.moves);
-	moves = ft_strjoin("moves: ", moves);
+	num = ft_itoa(game->player.moves);
+	moves = ft_strjoin("moves: ", num);
 	mlx_string_put(game->mlx, game->win, 5, 5, GREEN, moves);
 	ft_printf("%s\n", moves);
 	free(moves);
+	free(num);
 }
 
 /*	close_game()
@@ -52,7 +54,6 @@ int	close_game(t_game *game)
 */
 int	key_press(int keycode, t_game *game)
 {
-	ft_printf("key pressed: %d\n", keycode);
 	if (keycode == ESC)
 		close_game(game);
 	else if (keycode == W || keycode == UP)
