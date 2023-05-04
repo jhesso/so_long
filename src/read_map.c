@@ -6,12 +6,15 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 19:45:50 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:00:17 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*	validate_filename()
+*	validates that the given map file has the .ber file extension
+*/
 static int	validate_filename(char *file)
 {
 	if (!ft_strcmp(file + (ft_strlen(file) - 4), ".ber"))
@@ -19,6 +22,9 @@ static int	validate_filename(char *file)
 	return (0);
 }
 
+/*	check_newline()
+*	checks that there are no empty lines in between the map
+*/
 static void	check_newline(char *line)
 {
 	int i;
@@ -32,6 +38,9 @@ static void	check_newline(char *line)
 	}
 }
 
+/*	read_map()
+*	reads the given file and saves it into a char**
+*/
 char	**read_map(char *file)
 {
 	int		fd;

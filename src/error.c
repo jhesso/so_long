@@ -6,12 +6,16 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:45 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 21:09:25 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:47:50 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*	print_err()
+*	prints "Error: "
+*	and the given error message
+*/
 static void	print_err(char *err_msg)
 {
 	ft_putstr_fd("Error: ", 2);
@@ -19,6 +23,9 @@ static void	print_err(char *err_msg)
 	ft_putchar_fd('\n', 2);
 }
 
+/*	error()
+*	prints an error message based on the error code given
+*/
 int	error(int err_code)
 {
 	if (err_code == 1)

@@ -6,12 +6,15 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:12:19 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/02 17:47:41 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:52:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*	allocate_coordinate_map()
+*	allocates memory for the int representation of our map
+*/
 static int	**allocate_coordinate_map(t_map map)
 {
 	int	**coordinate_map;

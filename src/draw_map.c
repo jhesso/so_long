@@ -6,12 +6,15 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:19:40 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 15:37:05 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 15:46:30 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*	init_sprite()
+*	load all sprites to memory
+*/
 void	init_sprite(t_game *game)
 {
 	int	x;
@@ -25,6 +28,10 @@ void	init_sprite(t_game *game)
 	game->exit_open = mlx_xpm_file_to_image(game->mlx, EXIT_O, &x, &y);
 }
 
+/*	assign_image()
+*	select which image goes to the spot we're looking at, also swaps the exit
+*	to the open version once all collectibles are collected by the player
+*/
 void	assign_image(t_game *game, char c, int x, int y)
 {
 	if (c == '1')
@@ -53,6 +60,9 @@ void	assign_image(t_game *game, char c, int x, int y)
 	}
 }
 
+/*	draw_map()
+*	go through the map and put the corresponding sprite to the screen
+*/
 int	draw_map(t_game *game)
 {
 	int	y;
