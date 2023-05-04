@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/26 19:45:54 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:24:23 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ static int	validate_characters(char **map)
 	{
 		j = 0;
 		while (map[i][j] != '\0')
-		{	if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C' &&\
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C' && \
 				map[i][j] != 'E' && map[i][j] != 'P')
-					return (0);
+				return (0);
 			j++;
 		}
 		i++;
@@ -92,7 +93,7 @@ static int	check_required(t_map *map)
 	int	j;
 
 	i = 1;
-	while  (map->map[i])
+	while (map->map[i])
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -101,7 +102,7 @@ static int	check_required(t_map *map)
 				map->exit++;
 			else if (map->map[i][j] == 'C')
 				map->collectibles++;
-			else if(map->map[i][j] == 'P')
+			else if (map->map[i][j] == 'P')
 				map->start++;
 			j++;
 		}

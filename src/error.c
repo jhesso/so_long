@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:45 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:19:12 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:45:13 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	error(int err_code)
 */
 void	clean_exit(int err_code, char **map, t_game *game)
 {
-	// free everything
+	err_code = 1;
 	if (map)
 		free(map);
 	if (game)
 		free(game);
-	exit (err_code);
+	exit(err_code);
 }

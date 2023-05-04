@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 15:34:51 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:51:07 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,11 @@ typedef struct	s_game
 }				t_game;
 
 /* utils.c */
-void	clean_exit(int err_code, char **map, t_game *game);
-int		error(int err_code);
 int		get_rows(char **map);
+
+/* error.c */
+int		error(int err_code);
+void	clean_exit(int err_code, char **map, t_game *game);
 
 /* debug.c */
 void	debug_print_coordinate_map(t_map map);
@@ -175,7 +177,6 @@ int		move_up(t_game *game, int x, int y);
 int		move_left(t_game *game, int x, int y);
 int		move_down(t_game *game, int x, int y);
 int		move_right(t_game *game, int x, int y);
-
 
 /* mlx_init.c */
 void	init_mlx(t_game *game, char *title);

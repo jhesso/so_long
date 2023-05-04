@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:18:40 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:51:02 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	validate_filename(char *file)
 */
 static void	check_newline(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
@@ -38,28 +38,12 @@ static void	check_newline(char *line)
 	}
 }
 
-/*	read_map()
-*	reads the given file and saves it into a char**
-*/
-char	**read_map(char *file)
+static char *read_file(int fd, char *buf, int flag)
 {
-	int		fd;
-	char	**map;
-	char	*line;
-	char	*buf;
-	int		ret;
-	int		flag;
+	int	ret;
+	char *line;
 
-	if (!validate_filename(file))
-		clean_exit(error(6), NULL, NULL);
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		clean_exit(error(7), NULL, NULL);
 	ret = 1;
-	flag = 0;
-	buf = ft_calloc(BUFF + 1, sizeof(char));
-	if (!buf)
-		clean_exit(error(2), NULL, NULL);
 	while (ret > 0)
 	{
 		ret = read(fd, buf, BUFF);
@@ -79,6 +63,28 @@ char	**read_map(char *file)
 			flag = 1;
 		}
 	}
+	return (line);
+}
+
+/*	read_map()
+*	reads the given file and saves it into a char**
+*/
+char	**read_map(char *file)
+{
+	int		fd;
+	char	**map;
+	char	*line;
+	char	*buf;
+
+	if (!validate_filename(file))
+		clean_exit(error(6), NULL, NULL);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		clean_exit(error(7), NULL, NULL);
+	buf = ft_calloc(BUFF + 1, sizeof(char));
+	if (!buf)
+		clean_exit(error(2), NULL, NULL);
+	line = read_file(fd, buf, 0);
 	free(buf);
 	check_newline(line);
 	map = ft_split(line, '\n');
