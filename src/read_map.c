@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:50:57 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 17:16:41 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:54:27 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,18 @@ static void	check_newline(char *line)
 	while (line[i])
 	{
 		if (line[i] == '\n' && line[i + 1] == '\n')
-			clean_exit(error(3), NULL, NULL);
+			error(3);
 		i++;
 	}
+}
+
+static char	*ft_join(char *line, char *buf)
+{
+	char	*new_line;
+
+	new_line = ft_strjoin(line, buf);
+	free(line);
+	return (new_line);
 }
 
 static char	*read_file(int fd, char *buf, int flag)
@@ -52,17 +61,18 @@ static char	*read_file(int fd, char *buf, int flag)
 			free (buf);
 			if (line)
 				free(line);
-			clean_exit(error(8), NULL, NULL);
+			error(8);
 		}
 		buf[ret] = '\0';
 		if (flag)
-			line = ft_strjoin(line, buf);
+			line = ft_join(line, buf);
 		else
 		{
 			line = ft_strdup(buf);
 			flag = 1;
 		}
 	}
+	free(buf);
 	return (line);
 }
 
@@ -77,15 +87,14 @@ char	**read_map(char *file)
 	char	*buf;
 
 	if (!validate_filename(file))
-		clean_exit(error(6), NULL, NULL);
+		error(6);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		clean_exit(error(7), NULL, NULL);
+		error(7);
 	buf = ft_calloc(BUFF + 1, sizeof(char));
 	if (!buf)
-		clean_exit(error(2), NULL, NULL);
+		error(2);
 	line = read_file(fd, buf, 0);
-	free(buf);
 	check_newline(line);
 	map = ft_split(line, '\n');
 	free(line);

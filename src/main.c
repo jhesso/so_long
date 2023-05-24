@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 17:11:30 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:53:26 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	main(int ac, char **av)
 	t_player	player;
 
 	if (ac < 2)
-		clean_exit(error(4), NULL, NULL);
+		error(4);
 	if (ac > 2)
-		clean_exit(error(5), NULL, NULL);
+		error(5);
 	map.map = read_map(av[1]);
 	if (map.map == NULL || map.map[0] == NULL || map.map[0][0] == '\0')
-		clean_exit(error(8), NULL, NULL);
+		error(8);
 	map_validate(&map, &player);
 	game_init(map, player);
 	return (0);

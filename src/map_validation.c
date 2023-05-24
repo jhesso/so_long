@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 17:09:05 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:55:06 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ void	map_validate(t_map *map, t_player *player)
 	map->rows = get_rows(map->map);
 	get_coordinates(map, player);
 	if (ret == 0)
-		clean_exit(error(3), map->map, NULL);
+		error(3);
 	ret *= flood_fill(map, player->pos, map->coordinate_map);
 	if (ret == 0)
-		clean_exit(error(3), map->map, NULL);
+		error(3);
 }

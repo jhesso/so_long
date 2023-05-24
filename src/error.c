@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:45 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 16:45:13 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:55:49 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	print_err(char *err_msg)
 /*	error()
 *	prints an error message based on the error code given
 */
-int	error(int err_code)
+void	error(int err_code)
 {
 	if (err_code == 1)
 		print_err("unkown error");
@@ -44,19 +44,5 @@ int	error(int err_code)
 		print_err("file not found");
 	else if (err_code == 8)
 		print_err("read failed");
-	return (err_code);
-}
-
-/*	clean_exit()
-*	when ran into an error, free all allocated memory, print an error message
-*	and cleanly stop running the program
-*/
-void	clean_exit(int err_code, char **map, t_game *game)
-{
-	err_code = 1;
-	if (map)
-		free(map);
-	if (game)
-		free(game);
-	exit(err_code);
+	exit(1);
 }

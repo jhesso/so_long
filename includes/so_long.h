@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 17:28:24 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:55:59 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,10 @@ typedef struct	s_game
 
 /* utils.c */
 int		get_rows(char **map);
+void	free_map(char **map, int **coordinate_map);
 
 /* error.c */
-int		error(int err_code);
-void	clean_exit(int err_code, char **map, t_game *game);
+void	error(int err_code);
 
 /* debug.c */
 void	debug_print_coordinate_map(t_map map);
