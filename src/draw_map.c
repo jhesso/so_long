@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:19:40 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/25 16:09:31 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/25 16:19:55 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	assign_image(t_game *game, char c, int x, int y)
 static void	get_top_left_y(t_game *game, int *y)
 {
 	*y = 0;
-	if (game->player_y - 33 / 2 > 0)
+	if (game->player_y - 32 / 2 > 0)
 	{
-		if (game->map.rows - game->player_y > 32 / 2)
+		if (game->map.rows - game->player_y > 33 / 2)
 			*y = game->player_y - 33 / 2;
 		else
 			*y = game->map.rows - 33;
