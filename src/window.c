@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 15:57:19 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/24 14:19:35 by jhesso           ###   ########.fr       */
+/*   Created: 2023/04/26 16:12:58 by jhesso            #+#    #+#             */
+/*   Updated: 2023/05/04 16:01:34 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*	get_rows()
-*	calcualtes the amount of rows in our map
+/*	calculate_window_size()
+*	calculates the size needed for our window, if the map is really large
+*	limit the window size to the full hd resolution in order to fit most screens
 */
-int	get_rows(char **map)
+void	calculate_window_size(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
-void	free_map(char **map, int **coordinate_map)
-{
-	int	i;
-
-	i = 0;
-	while(map[i] && map)
-	{
-		free(map[i]);
-		i++;
-	}
-	i = 0;
-	while (coordinate_map[i] && coordinate_map)
-	{
-		free(coordinate_map[i]);
-		i++;
-	}
-	free(map);
-	free(coordinate_map);
+	game->width = game->map.cols * SIZE;
+	game->height = game->map.rows * SIZE;
+	if (game->width > 1920)
+		game->width = 1920;
+	if (game->height > 1056)
+		game->height = 1056;
 }

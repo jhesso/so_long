@@ -6,11 +6,11 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:11:23 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/25 14:51:39 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:53:26 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 /*	main()
 *	runs all of the modules of this program
@@ -21,14 +21,13 @@ int	main(int ac, char **av)
 	t_player	player;
 
 	if (ac < 2)
-		clean_exit(error(4), NULL, NULL);
+		error(4);
 	if (ac > 2)
-		clean_exit(error(5), NULL, NULL);
+		error(5);
 	map.map = read_map(av[1]);
-	if (!map.map)
-		clean_exit(error(1), NULL, NULL);
-	print_string_arr(map.map);
-	ft_printf("--------------------------\n");
+	if (map.map == NULL || map.map[0] == NULL || map.map[0][0] == '\0')
+		error(8);
 	map_validate(&map, &player);
-	// ft_printf("rows: %d\ncols: %d\nexit: %d\nstart: %d\ncollectibles: %d\n", map.rows, map.cols, map.exit, map.start, map.collectibles);
+	game_init(map, player);
+	return (0);
 }

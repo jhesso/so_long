@@ -5,3 +5,4 @@
 5 = too many arguments given
 6 = invalid filename (didn't have extension .ber)
 7 = file not found
+8 = read failed

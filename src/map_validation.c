@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/04/25 18:02:06 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/24 18:55:06 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ static int	validate_characters(char **map)
 	{
 		j = 0;
 		while (map[i][j] != '\0')
-		{	if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C' &&\
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C' && \
 				map[i][j] != 'E' && map[i][j] != 'P')
-					return (0);
+				return (0);
 			j++;
 		}
 		i++;
@@ -36,11 +37,11 @@ static int	validate_characters(char **map)
 	return (1);
 }
 
-/*	validate_vertical()
+/*	validate_horizontal()
 *	check that the top and bottom row only contains '1's
 *	returns 1 if true, 0 if not
 */
-static int	validate_vertical(char *line)
+static int	validate_horizontal(char *line)
 {
 	int	i;
 
@@ -65,7 +66,7 @@ static int	validate_shape(t_map *map)
 
 	map->cols = ft_strlen(map->map[0]);
 	i = 0;
-	if (!validate_vertical(map->map[i]))
+	if (!validate_horizontal(map->map[i]))
 		return (0);
 	while (map->map[i])
 	{
@@ -76,7 +77,7 @@ static int	validate_shape(t_map *map)
 		i++;
 	}
 	i--;
-	if (!validate_vertical(map->map[i]))
+	if (!validate_horizontal(map->map[i]))
 		return (0);
 	return (1);
 }
@@ -92,7 +93,7 @@ static int	check_required(t_map *map)
 	int	j;
 
 	i = 1;
-	while  (map->map[i])
+	while (map->map[i])
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -101,7 +102,7 @@ static int	check_required(t_map *map)
 				map->exit++;
 			else if (map->map[i][j] == 'C')
 				map->collectibles++;
-			else if(map->map[i][j] == 'P')
+			else if (map->map[i][j] == 'P')
 				map->start++;
 			j++;
 		}
@@ -125,10 +126,9 @@ void	map_validate(t_map *map, t_player *player)
 	ret *= check_required(map);
 	map->rows = get_rows(map->map);
 	get_coordinates(map, player);
-	// debug_print_coordinate_map(*map);
-	// ft_printf("player->x: %d, player->y: %d\n", player->pos.x, player->pos.y);
-	ret *= flood_fill(map, player->pos, map->coordinate_map);
-	ft_printf("returned from flood fill\n");
 	if (ret == 0)
-		clean_exit(error(3), map->map, NULL);
+		error(3);
+	ret *= flood_fill(map, player->pos, map->coordinate_map);
+	if (ret == 0)
+		error(3);
 }

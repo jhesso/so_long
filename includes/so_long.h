@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
+/*   Updated: 2023/05/24 18:55:59 by jhesso           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// # include <mlx.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -9,25 +21,60 @@
 # include <math.h>
 # include "../libft/includes/libft.h"
 
+# ifndef SIZE
+#  define SIZE 32
+# endif
+
+# ifndef WALL
+#  define WALL "./textures/wall.xpm"
+# endif
+
+# ifndef EMPTY
+#  define EMPTY "./textures/empty.xpm"
+# endif
+
+# ifndef CHAR
+#  define CHAR "./textures/Pink_Monster.xpm"
+# endif
+
+# ifndef COLLECT
+#  define COLLECT "./textures/coin.xpm"
+# endif
+
+# ifndef EXIT
+#  define EXIT "./textures/exit_door.xpm"
+# endif
+
+# ifndef EXIT_O
+#  define EXIT_O "./textures/exit_door_open.xpm"
+# endif
+
 # ifndef BUFF
 #  define BUFF 42
 # endif
 
-typedef struct	s_mlx
+# ifndef GREEN
+#  define GREEN 0x00FF00
+# endif
+
+enum e_key
 {
-	void		*mlx;
-	void		*window;
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_len;
-	int			endian;
-	int			color;
-	int			height;
-	int			width;
-	int			coord_x;
-	int			coord_y;
-}				t_mlx;
+	W = 13,
+	A = 0,
+	S = 1,
+	D = 2,
+	ESC = 53,
+	UP = 126,
+	DOWN = 125,
+	RIGHT = 124,
+	LEFT = 123
+};
+
+typedef struct	s_vector
+{
+	int			x;
+	int			y;
+}				t_vector;
 
 /*	s_map
 *	contains all information gathered about the given map
@@ -44,12 +91,6 @@ typedef struct	s_map
 	int			c;
 }				t_map;
 
-typedef struct	s_vector
-{
-	int			x;
-	int			y;
-}				t_vector;
-
 /*	s_player
 *	contains information of the player
 *	(position (x, y) and any other useful information I deem necessary)
@@ -57,15 +98,51 @@ typedef struct	s_vector
 typedef struct	s_player
 {
 	int			collectibles;
+	int			win_condition;
+	int			moves;
 	t_vector	pos;
 }				t_player;
 
+/*	s_game
+*	contains all information needed for the game
+*/
+typedef struct	s_game
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	char		**map_cpy;
+	int			bits_per_pixel;
+	int			line_len;
+	int			endian;
+	int			width;
+	int			height;
+	int			player_x;
+	int			player_y;
+	t_map		map;
+	t_player	player;
+	void		*wall;
+	void		*empty;
+	void		*character;
+	void		*collectible;
+	void		*exit;
+	void		*exit_open;
+}				t_game;
 
 /* utils.c */
-void	clean_exit(int err_code, char **map, t_mlx *mlx);
-int		error(int err_code);
 int		get_rows(char **map);
+void	free_map(char **map, int **coordinate_map);
 
+/* error.c */
+void	error(int err_code);
+
+/* debug.c */
+void	debug_print_coordinate_map(t_map map);
+
+/**********/
+/*	 MAP  */
+/**********/
 /* read_map.c */
 char	**read_map(char *file);
 
@@ -78,25 +155,35 @@ void	get_coordinates(t_map *map, t_player *player);
 /* flood_fill.c */
 int		flood_fill(t_map *map, t_vector pos, int **coord_map);
 
-/* mlx_init.c */
-t_mlx	init_mlx(int width, int height, char *title);
-t_mlx	get_img(t_mlx mlx, int width, int height);
+/**********/
+/*	GAME  */
+/**********/
+/* game.c */
+void	game_init(t_map map, t_player player);
+void	game_won(t_game *game);
 
-/* draw.c */
-void	draw_pixel(t_mlx *mlx, int x, int y, int color);
+/* window.c */
+void	calculate_window_size(t_game *game);
+
+/*	draw_map.c */
+void	init_sprite(t_game *game);
+void	assign_image(t_game *game, char c, int x, int y);
+int		draw_map(t_game *game);
 
 /* event.c */
-int	key_press(int keycode, t_mlx *mlx);
+int		close_game(t_game *game);
+int		key_press(int keycode, t_game *game);
+int		check_win(t_game *game);
 
 /* move.c */
-int	move(int keycode, t_mlx *mlx);
+void	move(t_game *game);
+int		move_up(t_game *game, int x, int y);
+int		move_left(t_game *game, int x, int y);
+int		move_down(t_game *game, int x, int y);
+int		move_right(t_game *game, int x, int y);
 
-/* sandbox.c */
-void	draw_square(t_mlx *mlx, int size);
-// void	draw_line_horizontal(t_img *img, t_coordinates start, t_coordinates end,
- 							// int color);
-
-/* debug.c */
-void	debug_print_coordinate_map(t_map map);
+/* mlx_init.c */
+void	init_mlx(t_game *game, char *title);
+void	get_img(t_game *game, int width, int height);
 
 #endif

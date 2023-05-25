@@ -6,20 +6,22 @@
 #    By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 18:02:10 by jhesso            #+#    #+#              #
-#    Updated: 2023/04/25 17:38:39 by jhesso           ###   ########.fr        #
+#    Updated: 2023/05/04 17:15:31 by jhesso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 CFLAGS			=	-Wall -Wextra -Werror
-MLX				=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX				=	-lmlx -framework OpenGL -framework AppKit
 LIBFT			=	libft.a
 LIBFT_DIR		=	libft/
 SRC_PATH		=	src/
 OBJ_PATH		=	obj/
 SRC				=	main.c\
 					read_map.c map_validation.c flood_fill.c map_coordinates.c\
-					utils.c debug.c
+					utils.c debug.c error.c\
+					game.c window.c mlx_init.c draw_map.c\
+					event.c move.c
 SRCS			=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ				=	$(SRC:.c=.o)
 OBJS			=	$(addprefix $(OBJ_PATH), $(OBJ))
@@ -47,9 +49,6 @@ $(NAME): $(OBJS) libft
 	@cc $(CFLAGS) $(OBJS) $(MLX) -o $(NAME) -L$(LIBFT_DIR) -lft
 	@echo "$(GREEN)done$(RESET)"
 
-linux: $(OBJS) libft
-	cc $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft
-
 clean:
 	@echo "$(RED)removing object files$(RESET)"
 	@/bin/rm $(OBJS)
@@ -64,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean linux re
+.PHONY: all libft clean fclean re
