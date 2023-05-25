@@ -3,4 +3,6 @@ a.out
 so_long
 *.o
 test*
-
+error_defs
+leak checklist
+leak.sh
