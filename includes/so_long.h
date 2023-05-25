@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/24 18:55:59 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/05/25 11:52:04 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ enum e_key
 	LEFT = 123
 };
 
-typedef struct	s_vector
+typedef struct s_vector
 {
 	int			x;
 	int			y;
@@ -79,7 +79,7 @@ typedef struct	s_vector
 /*	s_map
 *	contains all information gathered about the given map
 */
-typedef struct	s_map
+typedef struct s_map
 {
 	char		**map;
 	int			**coordinate_map;
@@ -95,7 +95,7 @@ typedef struct	s_map
 *	contains information of the player
 *	(position (x, y) and any other useful information I deem necessary)
 */
-typedef struct	s_player
+typedef struct s_player
 {
 	int			collectibles;
 	int			win_condition;
@@ -106,7 +106,7 @@ typedef struct	s_player
 /*	s_game
 *	contains all information needed for the game
 */
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
