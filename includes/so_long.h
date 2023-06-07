@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/25 11:52:04 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:42:57 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int		draw_map(t_game *game);
 int		close_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 int		check_win(t_game *game);
+void	print_moves(t_game *game);
 
 /* move.c */
 void	move(t_game *game);

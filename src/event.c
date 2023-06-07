@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:06:22 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/04 18:14:25 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:43:33 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	move(t_game *game)
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	game->player.moves++;
+	print_moves(game);
 }
 
 /*	print_moves()
@@ -76,6 +77,5 @@ int	key_press(int keycode, t_game *game)
 		if (move_right(game, game->player_x, game->player_y))
 			move(game);
 	}
-	print_moves(game);
 	return (0);
 }
