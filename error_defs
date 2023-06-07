@@ -1,8 +1,0 @@
-1 = unkown error (general purpose, used when I dont know what the clear cause is)
-2 = malloc fail
-3 = map error (maybe even can make it a bit more specific)
-4 = no map given as argument
-5 = too many arguments given
-6 = invalid filename (didn't have extension .ber)
-7 = file not found
-8 = read failed
