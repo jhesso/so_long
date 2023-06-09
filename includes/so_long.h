@@ -6,12 +6,16 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:21:24 by jhesso            #+#    #+#             */
-/*   Updated: 2023/06/07 15:42:57 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/06/09 13:41:55 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+/******************************************************************************/
+/*								Includes  									  */
+/******************************************************************************/
 
 # include <mlx.h>
 # include <stdlib.h>
@@ -19,7 +23,12 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
+
 # include "../libft/includes/libft.h"
+
+/******************************************************************************/
+/*								Defines  									  */
+/******************************************************************************/
 
 # ifndef SIZE
 #  define SIZE 32
@@ -70,15 +79,16 @@ enum e_key
 	LEFT = 123
 };
 
+/******************************************************************************/
+/*								Structs 									  */
+/******************************************************************************/
+
 typedef struct s_vector
 {
 	int			x;
 	int			y;
 }				t_vector;
 
-/*	s_map
-*	contains all information gathered about the given map
-*/
 typedef struct s_map
 {
 	char		**map;
@@ -91,10 +101,6 @@ typedef struct s_map
 	int			c;
 }				t_map;
 
-/*	s_player
-*	contains information of the player
-*	(position (x, y) and any other useful information I deem necessary)
-*/
 typedef struct s_player
 {
 	int			collectibles;
@@ -103,9 +109,6 @@ typedef struct s_player
 	t_vector	pos;
 }				t_player;
 
-/*	s_game
-*	contains all information needed for the game
-*/
 typedef struct s_game
 {
 	void		*mlx;
@@ -130,6 +133,11 @@ typedef struct s_game
 	void		*exit_open;
 }				t_game;
 
+/******************************************************************************/
+/*								  Functions									  */
+/******************************************************************************/
+
+/*--------------------------Utils and error handling--------------------------*/
 /* utils.c */
 int		get_rows(char **map);
 void	free_map(char **map, int **coordinate_map);
@@ -140,9 +148,7 @@ void	error(int err_code);
 /* debug.c */
 void	debug_print_coordinate_map(t_map map);
 
-/**********/
-/*	 MAP  */
-/**********/
+/*------------------------------------Map-------------------------------------*/
 /* read_map.c */
 char	**read_map(char *file);
 
@@ -155,9 +161,7 @@ void	get_coordinates(t_map *map, t_player *player);
 /* flood_fill.c */
 int		flood_fill(t_map *map, t_vector pos, int **coord_map);
 
-/**********/
-/*	GAME  */
-/**********/
+/*----------------------------------Game--------------------------------------*/
 /* game.c */
 void	game_init(t_map map, t_player player);
 void	game_won(t_game *game);
