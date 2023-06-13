@@ -6,7 +6,7 @@
 /*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 18:23:13 by jhesso            #+#    #+#             */
-/*   Updated: 2023/05/24 18:55:06 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/06/13 14:23:14 by jhesso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,14 @@ void	map_validate(t_map *map, t_player *player)
 	int	ret;
 
 	ret = validate_characters(map->map);
+	if (ret == 0)
+		error(3);
 	ret *= validate_shape(map);
+	if (ret == 0)
+		error(3);
 	ret *= check_required(map);
+	if (ret == 0)
+		error(3);
 	map->rows = get_rows(map->map);
 	get_coordinates(map, player);
 	if (ret == 0)
